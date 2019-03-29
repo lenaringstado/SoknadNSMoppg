@@ -11,6 +11,7 @@ ui <- tagList(
     title = div(img(src="rap/logo.svg", alt="Rapporteket", height="26px"),
                 regTitle),
     windowTitle = regTitle,
+    theme = "rap/bootstrap.css",
 
     tabPanel("Veiledning",
       sidebarLayout(
@@ -70,7 +71,7 @@ ui <- tagList(
       )
     ),
     tags$script(HTML("var header = $('.navbar> .container-fluid');
-                       header.append('<div style=\"float:right\">Company name<br>text here</div>');
+                       header.append('<div class=\"navbar-brand\" style=\"float:right\"><img src=\"rap/logo.svg\", alt=\"Rapporteket\", style=\"float:right;height:26px\"></div>');
                        console.log(header)"))
 
   ) # navbarPage
