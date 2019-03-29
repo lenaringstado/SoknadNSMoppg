@@ -66,8 +66,16 @@ ui <- tagList(
       ),
     tabPanel("Abonnement",
       sidebarLayout(
-        sidebarPanel(),
-        mainPanel()
+        sidebarPanel(
+          selectInput("subscriptionRep", "Rapport:", c("Samlerapport1", "Samlerapport2")),
+          selectInput("subscriptionFreq", "Frekvens:",
+                      list(Årlig="year", Kvartalsvis="quarter", Månedlig="month", Ukentlig="week", Daglig="DSTday"),
+                      selected = "month"),
+          actionButton("subscribe", "Bestill!")
+        ),
+        mainPanel(
+          uiOutput("subscriptionContent")
+        )
       )
     ),
     tags$script(HTML("var header = $('.navbar> .container-fluid');
