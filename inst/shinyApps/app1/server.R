@@ -1,6 +1,6 @@
 library(shiny)
 library(magrittr)
-library(raptools)
+library(rapRegTemplate)
 
 server <- function(input, output, session) {
 
@@ -8,7 +8,7 @@ server <- function(input, output, session) {
   htmlRenderRmd <- function(srcFile) {
     # set param needed for report meta processing
     params <- list(tableFormat="html")
-    system.file(srcFile, package="raptools") %>%
+    system.file(srcFile, package="rapRegTemplate") %>%
       knitr::knit() %>%
       markdown::markdownToHTML(.,
                                options = c('fragment_only',

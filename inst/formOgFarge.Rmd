@@ -1,0 +1,57 @@
+---
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+params:
+  title: "Form og farge"
+  author: "Rapporteket"
+  tableFormat: "html"
+header-includes:
+  - \usepackage[english, norsk]{babel}
+  - \usepackage{booktabs}
+  - \usepackage{rotating}
+title: "`r paste(params$title)`"
+author: "`r params$author`"
+---
+
+# Form og farge
+
+Dette er et eksempel på hvordan en side på Rapporteket kan se ut...
+
+## Stylesheets
+Ulike stiler (themes) kan velges fra menyen og tar umiddelbar effekt her.
+Tilgjengelige
+stiler er vilkårlige og det er meningen at vi lager vår egen basert på grafiske
+elementer og oppsett som allerede er definert i helseforetakene og
+servicemiljøet. Per desember 2018 er _bootstrap.css_ gjort tilgjengelig på
+Rapporteket. Den ligner veldig på den stilen som her er kalt _flatly_.
+
+## Logo
+Det er nettopp laget en egen logo for Rapporteket som her er vist oppe i
+venstre hjørne. Hvordan denne skal brukes er ikke bestemt, men det vil være
+et behov for å ha noe som gjør det raskt og enkelt å formidle at innholdet
+er en del av Rapporteket (og ikke noe annet).
+
+## Praktisk bruk av stylesheets og logo
+Stylesheets og grafiske elementer er felleskomponenter som skal være
+tilgjengelig på tvers av registre. Slike felleskomponenter er derfor lagt ut i
+R-pakken _rapbase_. For å benytte disse i en Shiny applikasjon (som denne) kan
+følgende kodesnutt benyttes:
+
+```{r cssAndLogo, echo=TRUE, eval=FALSE}
+library(shiny)
+library(rapbase)
+
+# gjør Rapportekets www-felleskomponenter tilgjengelig for applikasjonen
+addResourcePath('rap', system.file('www', package='rapbase'))
+
+# definér tittel
+regTitle = "rapLayoutTemplate"
+
+ui <- navbarPage(
+  # lag logo og tittel som en del av navbar
+  title = div(img(src="rap/logo.svg", alt="Rapporteket", height="26px"), regTitle),
+  # sett inn tittle også i browser-vindu
+  windowTitle = regTitle,
+  # velg css (foreløpig den eneste bortsett fra "naken" utgave)
+  theme = "rap/bootstrap.css"
+)
+```
