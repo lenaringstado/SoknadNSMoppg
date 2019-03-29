@@ -35,11 +35,6 @@ server <- function(input, output, session) {
     htmlRenderRmd("formOgFarge.Rmd")
   })
 
-  output$sampleUcControl <- renderUI({
-    selectInput(inputId = "sampleUc", label = "Sample user ctrl",
-                choices = c("How", "it", "will", "look"))
-  })
-
   output$distPlot <- renderPlot({
     makeHist(var = input$var, bins = input$bins)
   })
@@ -50,33 +45,5 @@ server <- function(input, output, session) {
 
   output$vurdering2niva <- renderUI({
     htmlRenderRmd("vurdering2niva.Rmd")
-  })
-
-  output$distPlotMpg <- renderPlot({
-    makeHist(var = "mpg", bins = input$binsMpg)
-  })
-
-  output$distTableMpg <- renderTable({
-    makeHist(var = "mpg", bins = input$binsMpg, makeTable = TRUE)
-  })
-
-  output$distPlotHp <- renderPlot({
-    makeHist(var = "hp", bins = input$binsHp)
-  })
-
-  output$distTableHp <- renderTable({
-    makeHist(var = "hp", bins = input$binsHp, makeTable = TRUE)
-  })
-
-  output$distPlotWt <- renderPlot({
-    makeHist(var = "wt", bins = input$binsWt)
-  })
-
-  output$distTableWt <- renderTable({
-    makeHist(var = "wt", bins = input$binsWt, makeTable = TRUE)
-  })
-
-  output$vurdering3niva <- renderUI({
-    htmlRenderRmd("vurdering3niva.Rmd")
   })
 }
