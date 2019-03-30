@@ -17,30 +17,16 @@ server <- function(input, output, session) {
       shiny::HTML()
   }
 
-  makeHist <- function(var, bins, makeTable = FALSE) {
-    x    <- mtcars[[var]]
-    bins <- seq(min(x), max(x), length.out = bins +1)
-    t <- hist(x, breaks = bins, col = '#154ba2', border = 'white',
-              main = paste("Fordeling av", var), xlab = var,
-              ylab = "Antall")
-    if (makeTable) {
-      data.frame(GruppeMin=t$breaks[1:length(t$mids)],
-                 GruppeMax=t$breaks[2:(length(t$mids)+1)], Antall=t$counts)
-    } else {
-      t
-    }
-  }
-
   output$formFarge <- renderUI({
     htmlRenderRmd("formOgFarge.Rmd")
   })
 
   output$distPlot <- renderPlot({
-    makeHist(var = input$var, bins = input$bins)
+    makeHist(df = mtcars, var = input$var, bins = input$bins)
   })
 
   output$distTable <- renderTable({
-    makeHist(var = input$var, bins = input$bins, makeTable = TRUE)
+    makeHist(df = mtcars, var = input$var, bins = input$bins, makeTable = TRUE)
   })
 
   output$vurdering2niva <- renderUI({
@@ -48,16 +34,16 @@ server <- function(input, output, session) {
   })
 
   # Abonnement
-  # reactive values to track subscriptions changes
+  ## reactive values to track subscriptions changes
   rv <- reactiveValues(subscriptionTab = rapbase::makeUserSubscriptionTab(session))
 
-  # render current subscriptions
+  ## render current subscriptions
   output$activeSubscriptions <- DT::renderDataTable(
     rv$subscriptionTab, server = FALSE, escape = FALSE, selection = 'none',
     options = list(dom = 't')
   )
 
-  # do not render a table when no subscriptions
+  ## do not render a table when no subscriptions
   output$subscriptionContent <- renderUI({
     userName <- rapbase::getUserName(session)
     if (length(rv$subscriptionTab) == 0) {
@@ -70,7 +56,7 @@ server <- function(input, output, session) {
     }
   })
 
-  # new subscription
+  ## new subscription
   observeEvent (input$subscribe, {
     package <- "rapRegTemplate"
     owner <- getUserName(session)
@@ -98,7 +84,7 @@ server <- function(input, output, session) {
     rv$subscriptionTab <- rapbase::makeUserSubscriptionTab(session)
   })
 
-  # remove existing subscription
+  ## remove existing subscription
   observeEvent(input$del_button, {
     selectedRepId <- strsplit(input$del_button, "_")[[1]][2]
     rapbase::deleteAutoReport(selectedRepId)
