@@ -1,0 +1,46 @@
+---
+title: "Samlerapport"
+author: "Rapporteket"
+date: '`r format(Sys.time(), "%d. %B %Y")`'
+params:
+  var: "mpg"
+  bins: 5
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(kableExtra)
+library(rapbase)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Samlerapport
+Dette er eksempel på en samlerapport som er egnet til å kobinere presentasjon
+av dynamisk tekst, tabeller og figurer. Samlerapporter kan vises i selve
+Rapporeket, lastes ned eller sendes (rutinemessig) per epost til de som ønsker
+det.
+
+
+## Eksempel på dynamisk tekst
+Idag, `r format(Sys.Date(), "%A %d. %b %Y")` er det
+`r as.numeric(format(Sys.Date(), "%j"))` dager siden nyttår
+
+
+## Eksempel på tabell
+Tabellen under er kjedelig, men illustrerer poenget:
+
+```{r eksTab}
+dt <- mtcars[1:6, ][params$var]
+kable(dt) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+```
+
+
+## Eksempel på figur
+Vi har sett den før, men tåler å få figuren på nytt:
+
+```{r eksFig, echo=FALSE}
+f <- rapRegTemplate::makeHist(df = mtcars, var = params$var, bins = params$bins, makeTable = FALSE)
+```

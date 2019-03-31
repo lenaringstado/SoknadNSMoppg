@@ -49,17 +49,17 @@ ui <- tagList(
         tabPanel("Fordeling av mpg",
           sidebarLayout(
             sidebarPanel(width = 3,
-              sliderInput(inputId = "binsMpg",
+              selectInput(inputId = "varS",
+                          label = "Variabel:",
+                          c("mpg", "disp", "hp", "drat", "wt", "qsec")),
+              sliderInput(inputId = "binsS",
                           label = "Antall grupper:",
                           min = 1,
                           max = 10,
                           value = 5)
             ),
             mainPanel(
-              tabsetPanel(
-                tabPanel("Figur", plotOutput("distPlotMpg")),
-                tabPanel("Tabell", tableOutput("distTableMpg"))
-              )
+              uiOutput("samlerapport")
             )
           )
         )
@@ -78,8 +78,10 @@ ui <- tagList(
         )
       )
     ),
+
+    # Use this to place a logo to the right in the nav-bar
     tags$script(HTML("var header = $('.navbar> .container-fluid');
-                       header.append('<div class=\"navbar-brand\" style=\"float:right\"><img src=\"rap/logo.svg\", alt=\"Rapporteket\", style=\"float:right;height:26px\"></div>');
+                       header.append('<div class=\"navbar-brand\" style=\"float:right\"><img src=\"rap/logo.svg\", alt=\"Rapporteket\", height=\"26px\"></div>');
                        console.log(header)"))
 
   ) # navbarPage

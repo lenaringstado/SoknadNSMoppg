@@ -5,9 +5,9 @@ library(rapRegTemplate)
 server <- function(input, output, session) {
 
   # html rendering function for re-use
-  htmlRenderRmd <- function(srcFile) {
+  htmlRenderRmd <- function(srcFile, params = list()) {
     # set param needed for report meta processing
-    params <- list(tableFormat="html")
+    # params <- list(tableFormat="html")
     system.file(srcFile, package="rapRegTemplate") %>%
       knitr::knit() %>%
       markdown::markdownToHTML(.,
@@ -17,21 +17,33 @@ server <- function(input, output, session) {
       shiny::HTML()
   }
 
+  # Veiledning
   output$formFarge <- renderUI({
     htmlRenderRmd("formOgFarge.Rmd")
   })
 
+  # Figur og tabell
+  ## Figur
   output$distPlot <- renderPlot({
     makeHist(df = mtcars, var = input$var, bins = input$bins)
   })
 
+  ## Table
   output$distTable <- renderTable({
     makeHist(df = mtcars, var = input$var, bins = input$bins, makeTable = TRUE)
   })
 
+  ## Vurdering
   output$vurdering2niva <- renderUI({
     htmlRenderRmd("vurdering2niva.Rmd")
   })
+
+  # Samlerapport
+  output$samlerapport <- renderUI({
+    htmlRenderRmd(srcFile = "samlerapport.Rmd",
+                  params = list(var = input$varS, bins = input$binsS))
+  })
+
 
   # Abonnement
   ## reactive values to track subscriptions changes
