@@ -56,7 +56,8 @@ ui <- tagList(
                           label = "Antall grupper:",
                           min = 1,
                           max = 10,
-                          value = 5)
+                          value = 5),
+              downloadButton("downloadSamlerapport", "Last ned!")
             ),
             mainPanel(
               uiOutput("samlerapport")
