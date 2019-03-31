@@ -16,7 +16,7 @@
 
 makeHist <- function(df, var, bins, makeTable = FALSE) {
 
-  x    <- mtcars[[var]]
+  x    <- df[[var]]
   bins <- seq(min(x), max(x), length.out = bins +1)
   t <- hist(x, breaks = bins, col = '#154ba2', border = 'white',
             main = paste("Fordeling av", var), xlab = var,
