@@ -18,8 +18,8 @@ server <- function(input, output, session) {
   }
 
   # Veiledning
-  output$formFarge <- renderUI({
-    htmlRenderRmd("formOgFarge.Rmd")
+  output$veiledning <- renderUI({
+    htmlRenderRmd("veiledning.Rmd")
   })
 
   # Figur og tabell
