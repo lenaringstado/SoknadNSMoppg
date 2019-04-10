@@ -6,6 +6,16 @@ Author: Who wrote it
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
+Depends:
+  R (>= 3.5.0),
+  rapbase (>= 1.0.0)
+Imports:
+  DT,
+  magrittr,
+  rapbase,
+  shiny
+Remotes:
+  Rapporteket/rapbase@abdaaa927ceae78c26fe7692da92463be714cffc
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
