@@ -14,13 +14,8 @@ ui <- tagList(
     theme = "rap/bootstrap.css",
 
     tabPanel("Veiledning",
-      sidebarLayout(
-        sidebarPanel(width = 3,
-          textInput(inputId="test", label="Eksempel", value = "Hvasomhelst")
-        ),
-        mainPanel(
-          htmlOutput("formFarge", inline = TRUE)
-        )
+      mainPanel(
+        htmlOutput("veiledning", inline = TRUE)
       )
     ),
     tabPanel("Figur og tabell",
@@ -67,7 +62,7 @@ ui <- tagList(
       ),
     tabPanel("Abonnement",
       sidebarLayout(
-        sidebarPanel(
+        sidebarPanel(width = 3,
           selectInput("subscriptionRep", "Rapport:", c("Samlerapport1", "Samlerapport2")),
           selectInput("subscriptionFreq", "Frekvens:",
                       list(Årlig="year", Kvartalsvis="quarter", Månedlig="month", Ukentlig="week", Daglig="DSTday"),
