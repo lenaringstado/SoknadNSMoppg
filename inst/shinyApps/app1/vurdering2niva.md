@@ -1,0 +1,41 @@
+---
+date: '10 april, 2019'
+params:
+  title: "Navigasjon på 2 nivå"
+  author: "Rapporteket"
+  tableFormat: "html"
+header-includes:
+  - \usepackage[english, norsk]{babel}
+  - \usepackage{booktabs}
+  - \usepackage{rotating}
+title: ""
+author: ""
+---
+
+## Navigasjon i 2 nivå
+Dette oppsettet gir mulighet for navigasjon på to nivåer. Overordnet nivå (1)
+er _navbar_ (her: "Form og farge", "Navigasjon i 2 nivå" og "Navigasjon i 3
+nivå") og underordnet nivå (2) er arkfaner (her: "Figur", "Tabell" og
+"Vurdering") knyttet til hvert enkelt sett av brukerkontroller (her: venstre
+kolonne).
+
+### Tenkt bruk
+For et register kan hver enkelt rapport angis på nivå 1 mens ulike
+utgaver (form og funksjon) av hver rapport kan gis i nivå 2.
+
+Nivå 1 kan også representere grupper/kategorier/typer av rapporter (for et
+register) der man flytter ytterligere spesifikasjon av ønsket rapport til
+brukervalgene i kolonna til venstre (brukerkontrollene). Nivå 2 brukes da
+tilsvarende beskrivelsen over. En slik strukturering er mye brukt for de
+registrene som har R-rapporter på Rapporteket idag.
+
+### Fordeler og ulemper
+Gir en kompakt og lett forståelig struktur å navigere i. Oppsettet er "visuelt" behagelig, nivåforskjellen framstår klart og brukerkontrollene får en naturlig knytning til visning av resultater.
+
+Navigasjonen skjer ved bruk av horisontalt orienterte menyer/arkfaner noe som
+gir en sterk begrensnig i antall innslag. Om man benytter nivå 1 til å angi
+enkeltrapporter og at hver av rapportene skal ha selvforklarende (litt lange)
+navn så vil det være vanskelig å få plass til mer enn en håndfull rapporter.
+Dette kan løses ved benytte kategorier av rapporter på nivå 1 men da vil det
+være en risiko for at det også blir vanskeligere å finne fram til ønkset
+enkeltrapport.
