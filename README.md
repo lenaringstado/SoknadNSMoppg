@@ -80,5 +80,5 @@ Denne delen inneholder noen nye elementer, slik som:
 ## Dytt (push) R-pakken til GitHub
 1. Om du ikke allerede har gjort det, lag din egen bruker på GitHub (se over)
 1. Valgfritt: om du ikke allerede har gjort det, bli medlem av organisasjonen Rapporteket på GitHub
-1. Under din egen side på GitHub, opprett et Repository med navn tilsvarende din egen pakke (e.g. "testRegister)
-1. I RStudio, push pakken til ditt nye Repository på GitHub (skjermdumper, men kan bli hårete bak proxy)
+1. Under din egen side på GitHub, opprett et Repository med navn tilsvarende din egen pakke (_e.g._ "testRegister")
+1. I RStudio, push pakken til ditt nye Repository på GitHub
