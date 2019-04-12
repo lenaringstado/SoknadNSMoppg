@@ -13,9 +13,11 @@ Imports:
   DT,
   magrittr,
   rapbase,
+  rmarkdown,
   shiny
 Remotes:
-  Rapporteket/rapbase@abdaaa927ceae78c26fe7692da92463be714cffc
+  Rapporteket/rapbase@rel
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
