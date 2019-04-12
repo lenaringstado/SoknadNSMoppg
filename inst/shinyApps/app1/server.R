@@ -4,7 +4,10 @@ library(rapRegTemplate)
 
 server <- function(input, output, session) {
 
-  # html rendering function for re-use
+  # Last inn data
+  # regData <- getFakeRegData()
+
+  # Gjenbrukbar funksjon for å bearbeide Rmd til html
   htmlRenderRmd <- function(srcFile, params = list()) {
     # set param needed for report meta processing
     # params <- list(tableFormat="html")
@@ -17,26 +20,24 @@ server <- function(input, output, session) {
       shiny::HTML()
   }
 
+
   # Veiledning
   output$veiledning <- renderUI({
     htmlRenderRmd("veiledning.Rmd")
   })
 
+
   # Figur og tabell
   ## Figur
-  output$distPlot <- renderPlot({
-    makeHist(df = mtcars, var = input$var, bins = input$bins)
-  })
+  # output$distPlot <- renderPlot({
+  #   makeHist(df = regData, var = input$var, bins = input$bins)
+  # })
 
-  ## Table
-  output$distTable <- renderTable({
-    makeHist(df = mtcars, var = input$var, bins = input$bins, makeTable = TRUE)
-  })
+  ## Tabell
+  # output$distTable <- renderTable({
+  #   makeHist(df = regData, var = input$var, bins = input$bins, makeTable = TRUE)
+  # })
 
-  ## Vurdering
-  output$vurdering2niva <- renderUI({
-    htmlRenderRmd("vurdering2niva.Rmd")
-  })
 
   # Samlerapport
   ## vis
@@ -68,16 +69,18 @@ server <- function(input, output, session) {
 
 
   # Abonnement
-  ## reactive values to track subscriptions changes
-  rv <- reactiveValues(subscriptionTab = rapbase::makeUserSubscriptionTab(session))
+  ## rekative verdier for å holde rede på endringer som skjer mens
+  ## applikasjonen kjører
+  rv <- reactiveValues(
+    subscriptionTab = rapbase::makeUserSubscriptionTab(session))
 
-  ## render current subscriptions
+  ## lag tabell over gjeldende status for abonnement
   output$activeSubscriptions <- DT::renderDataTable(
     rv$subscriptionTab, server = FALSE, escape = FALSE, selection = 'none',
     options = list(dom = 't')
   )
 
-  ## do not render a table when no subscriptions
+  ## lag side som viser status for abonnement, også når det ikke finnes noen
   output$subscriptionContent <- renderUI({
     userName <- rapbase::getUserName(session)
     if (length(rv$subscriptionTab) == 0) {
@@ -90,7 +93,7 @@ server <- function(input, output, session) {
     }
   })
 
-  ## new subscription
+  ## nye abonnement
   observeEvent (input$subscribe, {
     package <- "rapRegTemplate"
     owner <- getUserName(session)
@@ -118,7 +121,7 @@ server <- function(input, output, session) {
     rv$subscriptionTab <- rapbase::makeUserSubscriptionTab(session)
   })
 
-  ## remove existing subscription
+  ## slett eksisterende abonnement
   observeEvent(input$del_button, {
     selectedRepId <- strsplit(input$del_button, "_")[[1]][2]
     rapbase::deleteAutoReport(selectedRepId)
