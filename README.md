@@ -15,7 +15,9 @@ Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til
 1. Åpne fila inst/shinyApps/app1/ui.R og start Shiny-applikasjonen ("Run App")
 1. Navigér i applikasjonen for å se på struktur og farger (innhold mangler)
 
-## Lag ditt eget prosjekt basert på templatet
+## Valgfritt: lag ditt eget prosjekt basert på templatet
+Denne delen er satt som valgfri men kan likevel være relevant, særlig om det er ønskelig å benytte templatetet som utgangspunkt for etablering av nye registre på Rapporteket.
+
 1. Lag et nytt prosjekt i RStudio som en R-pakke
 1. Gi pakken et navn som gjerne gjenspeiler overordnet funksjon i pakken, eksempelvis "testRegister"
 1. Valgfritt: hak gjerne av for "Create a git repository" også da det vil gi nyttig kunnskap når egne registre skal utvikles seinere
@@ -27,14 +29,15 @@ Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til
 1. Test gjerne at innebygget Shiny-applikasjon fungerer på samme vis som i prosjektet "rapRegTemplate"
 
 ## Last registerdata
-### Alternativ 1: med Docker/Rapporteket
+### Alternativ 1: med Docker for Rapporteket
 1. Åpne fila R/GetRegData.R
 1. Se på de tre delene av funksjonen som definerer registernavn og sql-spørringen samt den som bruker de to forrige til å hente data (og som returnerer ei dataramme fra funksjonen)
 1. Sjekk at egen konfigurasjon (i fila /home/rstudio/rap_config) er i henhold til det datagrunnlaget som er gjort tilgjengelig
+1. Endre i SQL-spørringen slik at den er i henhold til datagrunnlaget som ønskes benyttet
 1. Prøv funksjonen fra kommandolinja (Console i RStudio), _e.g._ `df <- getRegData("navn_på_register")`
 1. Sjekk at du får returnert ei dataramme med X observasjoner for Y variabler, _e.g._ `attributes(df)`
 
-### Alternativ 2: uten Docker/Rapporteket
+### Alternativ 2: uten Docker for Rapporteket
 1. Åpne fila R/GetFakeRegData.R
 1. Se at funksjonen returnerer et kjedelig og irrelevant innebygget datasett :-(
 1. Prøv funksjonen fra kommandolinja (Console i RStudio), _e.g._ `df <- getFakeRegData()`
@@ -74,22 +77,28 @@ output$distSummary <- renderTable({
 
 ## Lag innhold i Shiny-applikasjonen, steg 3
 Bruk samme tilnærming som over, men for "Samlerapport". Her er det en del nye elementer, bl.a.
+
 - bruk av en Rmd-fil som rapportmal
 - funksjonalitet for nedlasting av rapporten
 
-## Lag innhold i Shiny-applikasjonen, steg 4 (forutsetter bruk av docker/Rapporteket)
-Denne delen inneholder noen nye elementer, slik som:
+## Lag innhold i Shiny-applikasjonen, steg 4
+Denne delen forutsetter bruk av [Docker for Rapporteket](https://github.com/Rapporteket/docker) eller tilsvarende utviklingsmiljø som "simulerer" Rapporteket. Her skal hver enkelt bruker kunne bestille rutinemessig tilsending per epost av gitte rapporter, eksempelvis slik som samlerapporten over med predefinerte verdier for "Variabel" og "Antall grupper". Tilnærmingen introduserer noen nye elementer, slik som:
+
 - reaktive verdier
 - lagring av innstillinger som er "varige" også etter at appliksjonen er avsluttet
 
-## Sjekk inn endringer i git
-1. Git er et verktøy for versjonskontroll som gir mulighet for å spore endringer og samarbeide om kode. Basale funksjoner i git er svært nyttinge, men kan virke forvirrende i starten. Sørg for at egen kode (bestandig) versjonshåndteres (i git) og at koden finnes sentralisert og tilgjengelig for deg selv og andre (på GitHub)
+## Valgfritt: sjekk inn endringer i git
+Git er et verktøy for versjonskontroll som gir mulighet for å spore endringer og samarbeide om kode. Basale funksjoner i git er svært nyttinge, men kan virke forvirrende i starten. Sørg for at egen kode (bestandig) versjonshåndteres (i git) og at koden finnes sentralisert og tilgjengelig for deg selv og andre (på GitHub).
+
 1. Sett opp git lokalt og etabler et sentralt repository for din R-pakke gjennom å følge [Hadley Wickhams veiledning](http://r-pkgs.had.co.nz/git.html#git-rstudio)
-1. NB Ved etablering av et nøkkelpar for bruk av Secure Shell (ssh) i kommunikasjonen med GitHub (generelt lurt men også nødvendig for avansert bruk av Rapporteket) er det viktig å påse at disse blir etablert på din egen fysiske datamaskin (og ikke inne i docker-containeren)
+1. Om du ikke har det fra før, etabler et ssh-nøkkelpar for sikker kommunikasjon med GitHub
+
+NB Ved etablering av et nøkkelpar for bruk av Secure Shell (ssh) i kommunikasjonen med GitHub (generelt lurt men også nødvendig for avansert bruk av Rapporteket) er det viktig å påse at disse blir etablert på din egen fysiske datamaskin (og eksempelvi ikke inne i en docker-container om det er i bruk)
 
 
-## Dytt (push) R-pakken til GitHub
+## Valgfritt: dytt (push) R-pakken til GitHub
 1. Om du ikke allerede har gjort det, lag din egen bruker på GitHub (se over)
-1. Valgfritt: om du ikke allerede har gjort det, bli medlem av organisasjonen Rapporteket på GitHub
+1. Om du ikke allerede har gjort det, [legg ut den offentlige delen av ditt ssh-nøkkelpar på din github-konto](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account) 
+1. Om du ikke allerede har gjort det, bli medlem av organisasjonen Rapporteket på GitHub
 1. Under din egen side på GitHub, opprett et Repository med navn tilsvarende din egen pakke (_e.g._ "testRegister")
 1. I RStudio, push pakken til ditt nye Repository på GitHub
