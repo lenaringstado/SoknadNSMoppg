@@ -4,4 +4,5 @@
 .Ruserdata
 figure
 *.html
-inst/veiledning.md
+inst/shinyApps/app1/*.md
+inst/*.md
