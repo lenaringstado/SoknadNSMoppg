@@ -43,7 +43,7 @@ Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til
 ## Lag innhold i Shiny-applikasjonen, steg 1
 Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars", jf. "Alternativ 2" over.
 
-1. Navigér til arkfanen "Figur og tabell"
+1. I shiny-applikasjonen, navigér til arkfanen "Figur og tabell"
 1. Åpne fila inst/shinyApps/app1/ui.R
 1. Bla ned til linja `tabPanel("Figur og tabell"`
 1. Kommenter inn linjene under, lagre fila og last applikasjonen på nytt ("Reload App")
@@ -60,21 +60,31 @@ Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars",
 1. Se også at de samme funksjonene tar i mot de brukervalg som er definert i inst/shinyApps/app1/ui.R (`input$var` og `input$bins`)
 1. Valgfritt: ta en titt på funksjonen som lager innholdet i figur og tabell: `?makeHist`
 1. Lagre fila, start applikasjonen på nytt og sjekk at figur og tabell er på plass og at disse reagerer på ulike brukervalg
+1. Oppgave A: lag en ny arkfane "Sammendrag" (etter "Figur" og "Tabell") ved å legge til kode i inst/shinyApps/app1/ui.R
+1. Oppgave B: fyll "Sammendrag" med en tabell som viser `summary` av valgt variabel ved å legge til kode i inst/shinyApps/app1/server.R
+
+Tips til oppgave B:
+```{r eval=FALSE}
+## Sammendrag
+output$distSummary <- renderTable({
+  as.data.frame(sapply(regData, summary))[input$var]
+}, rownames = TRUE)
+```
 
 ## Lag innhold i Shiny-applikasjonen, steg 3
 Bruk samme tilnærming som over, men for "Samlerapport". Her er det en del nye elementer, bl.a.
 - bruk av en Rmd-fil som rapportmal
 - funksjonalitet for nedlasting av rapporten
 
-## Lag innhold i Shiny-applikasjonen, steg 4 (forutsetter bruk av docker/Rapporteket)
-Denne delen inneholder noen nye elementer, slik som:
+## Lag innhold i Shiny-applikasjonen, steg 4
+Denne delen forutsetter bruk av docker eller tilsvarende utviklingsmiljø som "simulerer" Rapporteket. Her skal hver enkelt bruker kunne bestille rutinemessig tilsending per epost av gitte rapporter, eksempelvis slik som samlerapporten over med predefinerte verdier for "Variabel" og "Antall grupper". Tilnærmingen introduserer noen nye elementer, slik som:
 - reaktive verdier
 - lagring av innstillinger som er "varige" også etter at appliksjonen er avsluttet
 
 ## Sjekk inn endringer i git
 1. Git er et verktøy for versjonskontroll som gir mulighet for å spore endringer og samarbeide om kode. Basale funksjoner i git er svært nyttinge, men kan virke forvirrende i starten. Sørg for at egen kode (bestandig) versjonshåndteres (i git) og at koden finnes sentralisert og tilgjengelig for deg selv og andre (på GitHub)
 1. Sett opp git lokalt og etabler et sentralt repository for din R-pakke gjennom å følge [Hadley Wickhams veiledning](http://r-pkgs.had.co.nz/git.html#git-rstudio)
-1. NB Ved etablering av et nøkkelpar for bruk av Secure Shell (ssh) i kommunikasjonen med GitHub (generelt lurt men også nødvendig for avansert bruk av Rapporteket) er det viktig å påse at disse blir etablert på din egen fysiske datamaskin (og ikke inne i docker-containeren)
+1. NB Ved etablering av et nøkkelpar for bruk av Secure Shell (ssh) i kommunikasjonen med GitHub (generelt lurt men også nødvendig for avansert bruk av Rapporteket) er det viktig å påse at disse blir etablert på din egen fysiske datamaskin (og eksempelvi ikke inne i en docker-container om det er i bruk)
 
 
 ## Dytt (push) R-pakken til GitHub

@@ -1,7 +1,7 @@
 ---
 title: 'Veiledning'
 author: 'Rapporteket'
-date: '12. april 2019'
+date: '24. april 2019'
 output: 
   html_document: 
     keep_md: yes
@@ -43,7 +43,7 @@ Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til
 ## Lag innhold i Shiny-applikasjonen, steg 1
 Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars", jf. "Alternativ 2" over.
 
-1. Navigér til arkfanen "Figur og tabell"
+1. I shiny-applikasjonen, navigér til arkfanen "Figur og tabell"
 1. Åpne fila inst/shinyApps/app1/ui.R
 1. Bla ned til linja `tabPanel("Figur og tabell"`
 1. Kommenter inn linjene under, lagre fila og last applikasjonen på nytt ("Reload App")
@@ -60,6 +60,17 @@ Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars",
 1. Se også at de samme funksjonene tar i mot de brukervalg som er definert i inst/shinyApps/app1/ui.R (`input$var` og `input$bins`)
 1. Valgfritt: ta en titt på funksjonen som lager innholdet i figur og tabell: `?makeHist`
 1. Lagre fila, start applikasjonen på nytt og sjekk at figur og tabell er på plass og at disse reagerer på ulike brukervalg
+1. Oppgave A: lag en ny arkfane "Sammendrag" (etter "Figur" og "Tabell") ved å legge til kode i inst/shinyApps/app1/ui.R
+1. Oppgave B: fyll "Sammendrag" med en tabell som viser `summary` av valgt variabel ved å legge til kode i inst/shinyApps/app1/server.R
+
+Tips til oppgave B:
+
+```r
+## Sammendrag
+output$distSummary <- renderTable({
+  as.data.frame(sapply(regData, summary))[input$var]
+}, rownames = TRUE)
+```
 
 ## Lag innhold i Shiny-applikasjonen, steg 3
 Bruk samme tilnærming som over, men for "Samlerapport". Her er det en del nye elementer, bl.a.
