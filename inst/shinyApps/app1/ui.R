@@ -17,25 +17,25 @@ ui <- tagList(
       )
     ),
     tabPanel("Figur og tabell"
-      ,
-      sidebarLayout(
-        sidebarPanel(width = 3,
-          selectInput(inputId = "var",
-                      label = "Variabel:",
-                      c("mpg", "disp", "hp", "drat", "wt", "qsec")),
-          sliderInput(inputId = "bins",
-                      label = "Antall grupper:",
-                      min = 1,
-                      max = 10,
-                      value = 5)
-        ),
-        mainPanel(
-          tabsetPanel(
-            tabPanel("Figur", plotOutput("distPlot")),
-            tabPanel("Tabell", tableOutput("distTable"))
-          )
-        )
-      )
+      # ,
+      # sidebarLayout(
+      #   sidebarPanel(width = 3,
+      #     selectInput(inputId = "var",
+      #                 label = "Variabel:",
+      #                 c("mpg", "disp", "hp", "drat", "wt", "qsec")),
+      #     sliderInput(inputId = "bins",
+      #                 label = "Antall grupper:",
+      #                 min = 1,
+      #                 max = 10,
+      #                 value = 5)
+      #   ),
+      #   mainPanel(
+      #     tabsetPanel(
+      #       tabPanel("Figur", plotOutput("distPlot")),
+      #       tabPanel("Tabell", tableOutput("distTable"))
+      #     )
+      #   )
+      # )
     ),
     tabPanel("Samlerapport"
         # ,
