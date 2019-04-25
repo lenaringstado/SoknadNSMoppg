@@ -11,6 +11,7 @@ Depends:
   rapbase (>= 1.0.0)
 Imports:
   DT,
+  kableExtra,
   magrittr,
   rapbase,
   rmarkdown,
