@@ -20,6 +20,14 @@ server <- function(input, output, session) {
       shiny::HTML()
   }
 
+  # widget
+  output$appUserName <- renderText({
+    getUserName(session)
+  })
+  output$appOrgName <- renderText({
+    getUserReshId(session)
+  })
+
 
   # Veiledning
   output$veiledning <- renderUI({
