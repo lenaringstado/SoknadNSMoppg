@@ -21,12 +21,8 @@ server <- function(input, output, session) {
   }
 
   # widget
-  output$appUserName <- renderText({
-    getUserName(session)
-  })
-  output$appOrgName <- renderText({
-    getUserReshId(session)
-  })
+  output$appUserName <- renderText(getUserName(session))
+  output$appOrgName <- renderText(getUserReshId(session))
 
 
   # Veiledning
