@@ -75,9 +75,10 @@ ui <- tagList(
     ),
 
     # Use this to place a logo to the right in the nav-bar
-    tags$script(HTML("var header = $('.navbar> .container-fluid');
-                       header.append('<div class=\"navbar-brand\" style=\"float:right\"><img src=\"rap/logo.svg\", alt=\"Rapporteket\", height=\"26px\"></div>');
-                       console.log(header)"))
+    # tags$script(HTML("var header = $('.navbar> .container-fluid');
+    #                    header.append('<div class=\"navbar-brand\" style=\"float:right\"><img src=\"rap/logo.svg\", alt=\"Rapporteket\", height=\"26px\"></div>');
+    #                    console.log(header)"))
+    rapbase::appNavbarUserWidget()
 
   ) # navbarPage
 ) # tagList
