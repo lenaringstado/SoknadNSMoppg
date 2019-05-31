@@ -8,7 +8,7 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Depends:
   R (>= 3.5.0),
-  rapbase (>= 1.0.0)
+  rapbase (>= 1.8.0)
 Imports:
   DT,
   kableExtra,
@@ -17,7 +17,7 @@ Imports:
   rmarkdown,
   shiny
 Remotes:
-  Rapporteket/rapbase@rel
+  Rapporteket/rapbase
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
