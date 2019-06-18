@@ -1,6 +1,6 @@
 library(shiny)
 library(magrittr)
-library(rapRegTemplate)
+library(SoknadNSMoppg)
 
 server <- function(input, output, session) {
 
@@ -50,11 +50,11 @@ server <- function(input, output, session) {
   ## last ned
   output$downloadSamlerapport <- downloadHandler(
     filename = function() {
-      "rapRegTemplateSamlerapport.html"
+      "oppgaveSamlerapport.html"
     },
     content = function(file) {
       srcFile <- normalizePath(system.file("samlerapport.Rmd",
-                                           package = "rapRegTemplate"))
+                                           package = "SoknadNSMoppgave"))
       tmpFile <- "tmpSamlerapport.Rmd"
       owd <- setwd(tempdir())
       on.exit(setwd(owd))

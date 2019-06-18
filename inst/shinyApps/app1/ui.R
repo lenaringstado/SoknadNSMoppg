@@ -2,7 +2,7 @@ library(shiny)
 library(rapbase)
 
 addResourcePath('rap', system.file('www', package='rapbase'))
-regTitle = "rapRegTemplate"
+regTitle = "Oppgave"
 
 ui <- tagList(
   navbarPage(
@@ -13,7 +13,8 @@ ui <- tagList(
 
     tabPanel("Veiledning",
       mainPanel(width = 12,
-        htmlOutput("veiledning", inline = TRUE)
+        #htmlOutput("veiledning", inline = TRUE)
+        includeMarkdown('veiledning.md')
       )
     ),
     tabPanel("Figur og tabell"

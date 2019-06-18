@@ -1,6 +1,6 @@
 ---
 title: "Samlerapport"
-author: "Rapporteket"
+author: "Søker til stilling i Nasjonalt Servicemiljø"
 date: '`r format(Sys.time(), "%d. %B %Y")`'
 params:
   var: "mpg"

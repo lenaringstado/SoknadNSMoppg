@@ -11,7 +11,7 @@ output:
 
 
 # Lag en resultattjeneste i R-Shiny
-En resultattjeneste er en interaktiv løsning hvor man kan se på resultater for sine data. Det er utarbeidet et templat (en mal) i Shiny som man tar utgangspunkt i for å lage en interaktiv resultattjeneste.
+En resultattjeneste er en interaktiv løsning hvor man kan se på/leke med resultater for sine data. Det er utarbeidet et templat (en mal) i Shiny som man tar utgangspunkt i for å lage en interaktiv resultattjeneste.
 
 Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til RStudio og litt til bruk av git og GitHub. Som en ekstra støtte anbefales [R pacakges](http://r-pkgs.had.co.nz/) av Hadley Wickham og spesielt [beskrivelsen av git og GitHub](http://r-pkgs.had.co.nz/git.html#git-rstudio).
 
@@ -62,15 +62,15 @@ output$distSummary <- renderTable({
 
 ## Lag og presenter innhold i Shiny-applikasjonen
 
-Til denne oppgaven kan du velge å lage en egen Shiny-app for å løse oppgaven, eller du kan legge til faner i den du har startet på. Til del 1. og 2. kan du benytte markdown-dokumentet "Samlerapport" som mal/utgangspunkt, du kan lage en egen Beamer-presentasjon (eller PowerPoint) eller du kan legge presentasjonen direkte inn på ei (eller flere) Shiny-side(r).
+Nå er du ferdig med oppvarminga og klar for den egentlige oppgaven. Til denne oppgaven kan du velge å lage en egen Shiny-app for å løse oppgaven, eller du kan legge til faner i den du har startet på. Til del 1. og 2. kan du benytte markdown-dokumentet "Samlerapport" som mal/utgangspunkt, du kan lage en egen Beamer-presentasjon (eller PowerPoint) eller du kan legge presentasjonen direkte inn på ei (eller flere) Shiny-sider.
 
-Se vedlagte datasett Eksempeldata. (Datasettet kan lastes ved å benytte kommandoen `r data('EksempelData')`)
+Se vedlagte datasett Eksempeldata. (Datasettet kan lastes ved å benytte kommandoen  `data('EksempelData')`)
 Sykehusnavn er tilfeldig fordelt og data representerer ikke virkelige enkeltpersoner.
 
 
 1. Hva ville du ønske å vite om hver variabel for å kunne bruke de i en rapport/grafisk fremstilling? 
 1. Lag et metadatasett som beskriver alle variable og deres egenskaper. (Dikt opp der du ikke har mulighet for å vite alle detaljer du ønsker å vite om variabelen.)
-1. Presenter kort kvalitetsindikatoren reinnleggelse.  Dvs. lag en interaktiv visualisering av den. 
+1. Presenter kort kvalitetsindikatoren reinnleggelse.  Dvs. lag en interaktiv visualisering av den. Hvis du ikke får til å lage en interaktiv presentasjon, lager du bare en figur som legges inn i presentasjonen.
 Reinnleggelse representeres av variabelen ReAdmitted hvor 1=ja og 2=nei. Du står helt fritt i hvilken type figur(er) du vil benytte til visualisering/presentasjon. Se gjerne www.kvalitetsregistre.no for å finne relevante eksempler.
 
 
