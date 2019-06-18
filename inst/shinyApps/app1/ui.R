@@ -13,9 +13,7 @@ ui <- tagList(
 
     tabPanel("Veiledning",
       mainPanel(width = 12,
-        htmlOutput("veiledning", inline = TRUE),
-        appNavbarUserWidget(user = uiOutput("appUserName"),
-                            organization = uiOutput("appOrgName"))
+        htmlOutput("veiledning", inline = TRUE)
       )
     ),
     tabPanel("Figur og tabell"
