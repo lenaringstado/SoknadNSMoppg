@@ -6,7 +6,7 @@ Author: Lena R. Olsen
 Maintainer: Lena R. Olsen <Lena.Ringstad.Olsen@helse-nord.no>
 Description: Oppgaver i forbindelse med intervju SKDE
 Depends:
-  R (>= 3.5.0),
+  R (>= 3.4.0),
   rapbase (>= 1.8.0)
 Imports:
   DT,
