@@ -19,8 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Samlerapport
 Dette er eksempel på en samlerapport som er egnet til å kobinere presentasjon
 av dynamisk tekst, tabeller og figurer. Samlerapporter kan vises i selve
-Rapporeket, lastes ned eller sendes (rutinemessig) per epost til de som ønsker
-det.
+resultattjenesten eller lastes ned.
 
 
 ## Eksempel på dynamisk tekst
@@ -29,7 +28,7 @@ Idag, `r format(Sys.Date(), "%A %d. %b %Y")` er det
 
 
 ## Eksempel på tabell
-Tabellen under er kjedelig, men illustrerer poenget:
+Tabellen under er enkel, men illustrerer poenget:
 
 ```{r eksTab}
 dt <- mtcars[1:6, ][params$var]
