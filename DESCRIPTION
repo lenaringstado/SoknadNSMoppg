@@ -1,11 +1,10 @@
-Package: rapRegTemplate
+Package: SoknadNSMoppg
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Oppgave
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Lena R. Olsen
+Maintainer: Lena R. Olsen <Lena.Ringstad.Olsen@helse-nord.no>
+Description: Oppgaver i forbindelse med intervju SKDE
 Depends:
   R (>= 3.5.0),
   rapbase (>= 1.8.0)
