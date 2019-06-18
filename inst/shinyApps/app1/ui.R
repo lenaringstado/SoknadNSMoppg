@@ -13,9 +13,7 @@ ui <- tagList(
 
     tabPanel("Veiledning",
       mainPanel(width = 12,
-        htmlOutput("veiledning", inline = TRUE),
-        appNavbarUserWidget(user = uiOutput("appUserName"),
-                            organization = uiOutput("appOrgName"))
+        htmlOutput("veiledning", inline = TRUE)
       )
     ),
     tabPanel("Figur og tabell"
@@ -59,22 +57,7 @@ ui <- tagList(
         #     )
         #   )
         # )
-      ),
-    tabPanel("Abonnement"
-      # ,
-      # sidebarLayout(
-      #   sidebarPanel(width = 3,
-      #     selectInput("subscriptionRep", "Rapport:", c("Samlerapport1", "Samlerapport2")),
-      #     selectInput("subscriptionFreq", "Frekvens:",
-      #                 list(Årlig="year", Kvartalsvis="quarter", Månedlig="month", Ukentlig="week", Daglig="DSTday"),
-      #                 selected = "month"),
-      #     actionButton("subscribe", "Bestill!")
-      #   ),
-      #   mainPanel(
-      #     uiOutput("subscriptionContent")
-      #   )
-      # )
-    )
+      )
 
   ) # navbarPage
 ) # tagList
