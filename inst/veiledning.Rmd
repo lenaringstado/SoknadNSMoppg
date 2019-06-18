@@ -17,8 +17,8 @@ Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til
 
 
 ## Prøv templatet
-1. Installér pakken [rapRegTemplate](https://github.com/Rapporteket/rapRegTemplate) i RStudio (`devtools::install_github("Rapporteket/rapRegTemplate")`)
-1. Hent ned prosjektet [rapRegTemplate](https://github.com/Rapporteket/rapRegTemplate) til RStudio (for mer info, se [her](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects))
+1. Installér pakken [SoknadNSMoppg](https://github.com/lenaringstado/SoknadNSMoppg) i RStudio (`devtools::install_github("lenaringstado/SoknadNSMoppg")`)
+1. Hent ned prosjektet [SoknadNSMoppg](https://github.com/lenaringstado/SoknadNSMoppg) til RStudio (for mer info, se [her](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects))
 (Hvis du ikke klarer å sette opp en direkte kobling til github kan du  kopiere filene til din datamaskin, pakke de ut og installere pakken.)
 1. Åpne fila inst/shinyApps/app1/ui.R og start Shiny-applikasjonen ("Run App")
 1. Navigér i applikasjonen for å se på struktur og farger (innhold mangler)
