@@ -47,7 +47,7 @@ Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars".
 1. Sjekk at det er samsvar mellom id-ene definert i inst/shinyApps/app1/ui.R og de datastrukturene (`output$distPlot` og `output$distTable`) du nå har definert i inst/shinyApps/app1/server.R
 1. Se at `regData` gis inn til de funksjoner som lager figur og tabell, hhv
 1. Se også at de samme funksjonene tar i mot de brukervalg som er definert i inst/shinyApps/app1/ui.R (`input$var` og `input$bins`)
-1. Valgfritt: ta en titt på funksjonen som lager innholdet i figur og tabell: `?makeHist`
+1. Ta en titt på funksjonen som lager innholdet i figur og tabell: `?makeHist`
 1. Lagre fila, start applikasjonen på nytt og sjekk at figur og tabell er på plass og at disse reagerer på ulike brukervalg
 1. Oppgave A: lag en ny arkfane "Sammendrag" (etter "Figur" og "Tabell") ved å legge til kode i inst/shinyApps/app1/ui.R
 1. Oppgave B: fyll "Sammendrag" med en tabell som viser `summary` av valgt variabel ved å legge til kode i inst/shinyApps/app1/server.R
@@ -60,7 +60,7 @@ output$distSummary <- renderTable({
 }, rownames = TRUE)
 ```
 
-## Lag og presenter innhold i Shiny-applikasjonen
+## Hovedoppgave
 
 Nå er du ferdig med oppvarminga og klar for den egentlige oppgaven. Til denne oppgaven kan du velge å lage en egen Shiny-app for å løse oppgaven, eller du kan legge til faner i den du har startet på. Til del 1. og 2. kan du benytte markdown-dokumentet "Samlerapport" som mal/utgangspunkt, du kan lage en egen Beamer-presentasjon (eller PowerPoint) eller du kan legge presentasjonen direkte inn på ei (eller flere) Shiny-sider.
 
