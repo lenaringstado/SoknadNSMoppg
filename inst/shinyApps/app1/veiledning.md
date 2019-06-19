@@ -1,0 +1,77 @@
+---
+title: 'Veiledning'
+author: 'Intervjukomiteen, SKDE'
+date: '19. juni 2019'
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+
+
+
+# Lag en resultattjeneste i R-Shiny
+En resultattjeneste er en interaktiv løsning hvor man kan se på/leke med resultater for sine data. Det er utarbeidet et templat (en mal) i Shiny som man tar utgangspunkt i for å lage en interaktiv resultattjeneste.
+
+Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til RStudio. Det er også en fordel med litt kjennskap til bruk av git og GitHub. Som en ekstra støtte anbefales [R packages](http://r-pkgs.had.co.nz/) av Hadley Wickham og spesielt [beskrivelsen av git og GitHub](http://r-pkgs.had.co.nz/git.html#git-rstudio).
+
+
+## Prøv templatet
+1. Installér pakken [SoknadNSMoppg](https://github.com/lenaringstado/SoknadNSMoppg) i RStudio (`devtools::install_github("lenaringstado/SoknadNSMoppg")`)
+1. Hent ned prosjektet [SoknadNSMoppg](https://github.com/lenaringstado/SoknadNSMoppg) til RStudio (for mer info, se [her](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects))
+(Hvis du ikke klarer å sette opp en direkte kobling til github kan du  kopiere filene til din datamaskin, pakke de ut og installere pakken.)
+1. Åpne fila inst/shinyApps/app1/ui.R og start Shiny-applikasjonen ("Run App")
+1. Navigér i applikasjonen for å se på struktur og farger (innhold mangler)
+
+## Last data
+1. Åpne fila R/GetFakeRegData.R
+1. Se at funksjonen returnerer et datasett.
+1. Prøv funksjonen fra kommandolinja (Console i RStudio), _e.g._ `df <- getFakeRegData()`
+1. Sjekk at du får returnert ei dataramme med X observasjoner for Y variabler, _e.g._ `attributes(df)`
+
+## Lag innhold i Shiny-applikasjonen, steg 1
+Utgangspunket for de neste stegene er bruk av det innebygde datasettet "mtcars".
+
+1. I shiny-applikasjonen, navigér til arkfanen "Figur og tabell"
+1. Åpne fila inst/shinyApps/app1/ui.R
+1. Bla ned til linja `tabPanel("Figur og tabell"`
+1. Kommenter inn linjene under, lagre fila og last applikasjonen på nytt ("Reload App")
+1. Sjekk at det er kommet inn GUI-elementer i arkfanen "Figur og tabell" som før var tom
+1. Prøv gjerne de brukervalg som er i venstre kolonne
+1. Oppgave: gjør endringer i inst/shinyApps/app1/ui.R (på de linjene som nettopp er kommentert inn) slik at maks antall grupper endres fra 10 til 12 i applikasjonen 
+
+## Lag innhold i Shiny-applikasjonen, steg 2
+1. Åpne fila inst/shinyApps/app1/server.R
+1. Bla ned til kommentaren `# Last inn data` og kommenter inn linja under 
+1. Bla videre ned til kommentaren `# Figur og tabell` og kommenter inn de linjene som ligger under `## Figur` og `## Tabell`, hhv
+1. Sjekk at det er samsvar mellom id-ene definert i inst/shinyApps/app1/ui.R og de datastrukturene (`output$distPlot` og `output$distTable`) du nå har definert i inst/shinyApps/app1/server.R
+1. Se at `regData` gis inn til de funksjoner som lager figur og tabell, hhv
+1. Se også at de samme funksjonene tar i mot de brukervalg som er definert i inst/shinyApps/app1/ui.R (`input$var` og `input$bins`)
+1. Ta en titt på funksjonen som lager innholdet i figur og tabell: `?makeHist`
+1. Lagre fila, start applikasjonen på nytt og sjekk at figur og tabell er på plass og at disse reagerer på ulike brukervalg
+1. Oppgave A: lag en ny arkfane "Sammendrag" (etter "Figur" og "Tabell") ved å legge til kode i inst/shinyApps/app1/ui.R
+1. Oppgave B: fyll "Sammendrag" med en tabell som viser `summary` av valgt variabel ved å legge til kode i inst/shinyApps/app1/server.R
+
+Tips til oppgave B:
+
+```r
+## Sammendrag
+output$distSummary <- renderTable({
+  as.data.frame(sapply(regData, summary))[input$var]
+}, rownames = TRUE)
+```
+
+## Hovedoppgave
+
+Nå er du ferdig med oppvarminga og klar for den egentlige oppgaven. Til denne oppgaven kan du velge å lage en egen Shiny-app for å løse oppgaven, eller du kan legge til faner i den du har startet på. Til del 1. og 2. kan du benytte markdown-dokumentet "Samlerapport" som mal/utgangspunkt, du kan lage en egen Beamer-presentasjon (eller PowerPoint) eller du kan legge presentasjonen direkte inn på ei (eller flere) Shiny-sider.
+
+Se vedlagte datasett Eksempeldata. (Datasettet kan lastes ved å benytte kommandoen  `data('EksempelData')`). Samme datasett finnes også som csv-fil i katalogen /data, dvs. `/data/EksempelData.csv`.
+Sykehusnavn er tilfeldig fordelt og data representerer ikke virkelige enkeltpersoner.
+
+
+1. Hva ville du ønske å vite om hver variabel for å kunne bruke de i en rapport/grafisk fremstilling? 
+1. Lag et metadatasett som beskriver alle variable og deres egenskaper. (Dikt opp der du ikke har mulighet for å vite alle detaljer du ønsker å vite om variabelen.)
+1. Presenter kort kvalitetsindikatoren reinnleggelse.  Dvs. lag en interaktiv visualisering av den. Hvis du ikke får til å lage en interaktiv presentasjon, lager du bare en figur som legges inn i presentasjonen.
+Reinnleggelse representeres av variabelen ReAdmitted hvor 1=ja og 2=nei. Du står helt fritt i hvilken type figur(er) du vil benytte til visualisering/presentasjon. Se gjerne www.kvalitetsregistre.no for å finne relevante eksempler.
+
+
