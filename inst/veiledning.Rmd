@@ -13,7 +13,7 @@ output:
 # Lag en resultattjeneste i R-Shiny
 En resultattjeneste er en interaktiv løsning hvor man kan se på/leke med resultater for sine data. Det er utarbeidet et templat (en mal) i Shiny som man tar utgangspunkt i for å lage en interaktiv resultattjeneste.
 
-Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til RStudio og litt til bruk av git og GitHub. Som en ekstra støtte anbefales [R pacakges](http://r-pkgs.had.co.nz/) av Hadley Wickham og spesielt [beskrivelsen av git og GitHub](http://r-pkgs.had.co.nz/git.html#git-rstudio).
+Beskrivelsen under er ikke nødvendigvis utfyllende og forutsetter kjennskap til RStudio. Det er også en fordel med litt kjennskap til bruk av git og GitHub. Som en ekstra støtte anbefales [R packages](http://r-pkgs.had.co.nz/) av Hadley Wickham og spesielt [beskrivelsen av git og GitHub](http://r-pkgs.had.co.nz/git.html#git-rstudio).
 
 
 ## Prøv templatet
@@ -64,7 +64,7 @@ output$distSummary <- renderTable({
 
 Nå er du ferdig med oppvarminga og klar for den egentlige oppgaven. Til denne oppgaven kan du velge å lage en egen Shiny-app for å løse oppgaven, eller du kan legge til faner i den du har startet på. Til del 1. og 2. kan du benytte markdown-dokumentet "Samlerapport" som mal/utgangspunkt, du kan lage en egen Beamer-presentasjon (eller PowerPoint) eller du kan legge presentasjonen direkte inn på ei (eller flere) Shiny-sider.
 
-Se vedlagte datasett Eksempeldata. (Datasettet kan lastes ved å benytte kommandoen  `data('EksempelData')`)
+Se vedlagte datasett Eksempeldata. (Datasettet kan lastes ved å benytte kommandoen  `data('EksempelData')`). Samme datasett finnes også som csv-fil i katalogen /data, dvs. /data/EksempelData.csv.
 Sykehusnavn er tilfeldig fordelt og data representerer ikke virkelige enkeltpersoner.
 
 
